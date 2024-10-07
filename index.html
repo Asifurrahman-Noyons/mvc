@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Malay visa check</title>
+</head>
+<body class="bg-gray-900 dark:bg-gray-800 transition-colors duration-300">
+
+<!-- Navbar -->
+<nav class="bg-gray-800 dark:bg-gray-900 p-4 shadow-lg flex justify-between items-center">
+    <!-- Left: Back Icon -->
+    <button onclick="window.history.back()" class="text-white text-xl">
+        <i class="fas fa-arrow-left"></i> <!-- FontAwesome Back Icon -->
+    </button>
+
+    <!-- Center: Title -->
+    <h1 class="text-white text-lg font-bold">Malay Visa check</h1>
+
+    <!-- Right: Language Toggle -->
+    <button id="toggleLanguageNavbar" class="bg-blue-500 text-white px-2 py-1 rounded-md text-sm">EN / BN</button>
+</nav>
+
+<div class="mx-4">
+
+
+<!-- Form Section with Input Validation -->
+<div class="container mx-auto p-4 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-md mt-6 mb-4">
+    <form id="passportForm" action="https://eservices.imi.gov.my/myimms/VPAStsInq" method="post">
+        <label class="block text-xl font-bold text-gray-300 dark:text-gray-400 mb-2" id="passportLabel">Passport Number</label>
+        <input type="text" id="passportInput" name="MAD_DOC_NO" maxlength="20" placeholder="Enter your passport number" class="w-full h-12 p-2 text-xl bg-gray-700 dark:bg-gray-800 text-white placeholder-gray-400 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform mb-4" required/>
+
+        <label class="block text-xl font-bold text-gray-300 dark:text-gray-400 mb-2" id="countryLabel">Select Country</label>
+        <select name="MAD_DOC_CTRY_CD" class="w-full h-12 p-2 text-xl bg-gray-700 dark:bg-gray-800 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform mb-4" required>
+            <option value="">Select Country</option>
+            <option value="BGD" selected>BANGLADESH</option>
+            <option value="AFG">AFGHANISTAN</option>
+            <option value="ALB">ALBANIA</option>
+        </select>
+
+        <input id="search" name="search" type="submit" class="w-full h-12 bg-green-500 text-white text-xl font-bold rounded-md hover:bg-green-600 transition-all" value="Search">
+    </form>
+</div>
+
+</div>
+<!-- Top Box with Join Group -->
+<div class="container mx-auto p-4 bg-gray-800 dark:bg-gray-900 rounded-lg shadow-md mt-6 mb-4">
+    <h2 class="text-2xl font-bold text-gray-300 dark:text-gray-400 mb-2">Join Our Community</h2>
+    <p class="text-lg text-gray-400 dark:text-gray-500 mb-2">Be part of our growing community on Facebook!</p>
+    <img src="https://via.placeholder.com/300" alt="Community Image" class="w-full h-auto rounded-md mb-2">
+    <button onclick="window.open('https://www.facebook.com/groups/yourgroupname', '_blank')" class="w-full h-12 bg-blue-500 text-white text-lg font-bold rounded-md hover:bg-blue-600 transition-all">
+        Join Group
+    </button>
+</div>
+
+<!-- 8 Boxes Section -->
+<div class="container mx-auto mt-6 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Generate Boxes Dynamically using JavaScript -->
+    <script>
+      const boxContent = [
+        { title: 'Box 1 Title', description: 'This is a description for box 1.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 2 Title', description: 'This is a description for box 2.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 3 Title', description: 'This is a description for box 3.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 4 Title', description: 'This is a description for box 4.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 5 Title', description: 'This is a description for box 5.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 6 Title', description: 'This is a description for box 6.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 7 Title', description: 'This is a description for box 7.', imgSrc: 'https://via.placeholder.com/300' },
+        { title: 'Box 8 Title', description: 'This is a description for box 8.', imgSrc: 'https://via.placeholder.com/300' }
+      ];
+
+      const boxContainer = document.createElement('div');
+      boxContainer.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'gap-4');
+
+      boxContent.forEach(({ title, description, imgSrc }) => {
+        const box = document.createElement('div');
+        box.classList.add('p-4', 'bg-gray-800', 'dark:bg-gray-900', 'rounded-lg', 'shadow-md');
+
+        const boxTitle = document.createElement('h2');
+        boxTitle.classList.add('text-2xl', 'font-bold', 'text-gray-300', 'dark:text-gray-400', 'mb-2');
+        boxTitle.innerText = title;
+
+        const boxDesc = document.createElement('p');
+        boxDesc.classList.add('text-lg', 'text-gray-400', 'dark:text-gray-500', 'mb-2');
+        boxDesc.innerText = description;
+
+        const boxImg = document.createElement('img');
+        boxImg.src = imgSrc;
+        boxImg.classList.add('w-full', 'rounded-md', 'shadow-lg');
+
+        box.append(boxTitle, boxDesc, boxImg);
+        boxContainer.append(box);
+      });
+
+      document.body.append(boxContainer);
+    </script>
+</div>
+
+<!-- JavaScript for Back Button Control and Language Toggle -->
+<script>
+    // Back button behavior
+    window.addEventListener('popstate', (event) => {
+      if (window.history.state === null) {
+        alert('You are about to exit the website!'); // Customize this action if needed
+      } else {
+        window.history.back();
+      }
+    });
+
+    // Push initial state to control back navigation
+    window.history.pushState({ page: 1 }, '', '');
+
+    // Optional: Prevent double popstate events on page load
+    window.addEventListener('load', () => {
+      if (window.history.state === null) {
+        window.history.replaceState({ page: 1 }, '', '');
+      }
+    });
+
+    // Language Toggle
+    const toggleLanguage = document.getElementById('toggleLanguageNavbar');
+    const passportLabel = document.getElementById('passportLabel');
+    const countryLabel = document.getElementById('countryLabel');
+    const passportInput = document.getElementById('passportInput');
+    let isEnglish = true;
+
+    const toggleLanguageFunction = () => {
+      isEnglish = !isEnglish;
+      passportLabel.innerText = isEnglish ? 'Passport Number' : 'পাসপোর্ট নম্বর';
+      passportInput.placeholder = isEnglish ? 'Enter your passport number' : 'আপনার পাসপোর্ট নম্বর লিখুন';
+      countryLabel.innerText = isEnglish ? 'Select Country' : 'দেশ নির্বাচন করুন';
+      toggleLanguage.innerText = isEnglish ? 'EN / BN' : 'BN / EN';
+
+      const boxTitles = document.querySelectorAll('h2');
+      const boxDescs = document.querySelectorAll('p');
+      boxTitles.forEach((title, idx) => title.innerText = isEnglish ? `Box ${idx + 1} Title` : `বক্স ${idx + 1} শিরোনাম`);
+      boxDescs.forEach((desc, idx) => desc.innerText = isEnglish ? `This is a description for box ${idx + 1}.` : `এটি বক্স ${idx + 1} এর বর্ণনা।`);
+    };
+
+    toggleLanguage.addEventListener('click', toggleLanguageFunction);
+
+    // Form Validation with Hint for Passport Input
+    const form = document.getElementById('passportForm');
+    const validateForm = (e) => {
+      if (!passportInput.value) {
+        alert('Please enter your passport number');
+        e.preventDefault();
+      }
+    };
+
+    form.addEventListener('submit', validateForm);
+  </script>
+</body>
+</html>
